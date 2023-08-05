@@ -24,6 +24,12 @@ contract MyGovernor is
         GovernorTimelockControl(_timelock)
     {}
 
+    /*
+        Specified in the unit defined in the token’s clock. 
+        Assuming the token uses block numbers, and assuming block time of 
+        around 12 seconds, we will have set votingDelay = 1 day = 7200 
+        blocks, and votingPeriod = 1 week = 50400 blocks.
+    */
     function votingDelay() public pure override returns (uint256) {
         return 7200; // 1 day
     }

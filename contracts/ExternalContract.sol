@@ -11,7 +11,6 @@ contract ExternalContract {
     function publicCall(
         string memory testVal
     ) public pure returns (string memory) {
-        // print
         console.log(testVal);
         return "public call";
     }
