@@ -25,7 +25,7 @@ export const SlideIn: React.FC<
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [contentRef.current]);
+  }, []);
 
   return (
     <div

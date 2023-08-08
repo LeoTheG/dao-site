@@ -4,14 +4,16 @@ import Image from "next/image";
 import React from "react";
 import { SlideIn } from "@/components/slideIn";
 import { Separator } from "@/components/ui/separator";
-import { Vina_Sans } from "next/font/google";
+// import { Vina_Sans } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconHeartFilled
 } from "@tabler/icons-react";
 
-const fontFamily = Vina_Sans({
+// const fontFamily = Vina_Sans({
+const fontFamily = Playfair_Display({
   weight: "400",
   subsets: ["latin"]
 });
@@ -62,10 +64,11 @@ export default function Home() {
           </div>
 
           <div>
-            - <strong>Secure and Transparent:</strong> Our platform leverages
+            - <strong>Secure and Transparent:</strong>
+            {` Our platform leverages
             blockchain technology to ensure the highest level of security and
             transparency. All decisions and transactions are recorded on the
-            blockchain, providing an immutable record of your DAO's activities.
+            blockchain, providing an immutable record of your DAO's activities.`}
           </div>
 
           <div>
@@ -76,10 +79,11 @@ export default function Home() {
           </div>
 
           <div>
-            - <strong>Customizable Governance:</strong> Tailor your DAO's
+            - <strong>Customizable Governance:</strong>
+            {`Tailor your DAO's
             governance model to fit your unique needs. Choose from various
             voting mechanisms, such as simple majority, quadratic voting, or
-            even futarchy.
+            even futarchy.`}
           </div>
 
           <div>
