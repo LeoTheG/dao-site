@@ -162,7 +162,7 @@ export const useMetamaskAuth = () => {
 // redirect to home
 
 export const withMetamaskAuth = (Component: React.FC) => {
-  return () => {
+  return function HOC() {
     const { isLoading, connected } = useMetamaskAuth();
     const router = useRouter();
 
@@ -170,7 +170,7 @@ export const withMetamaskAuth = (Component: React.FC) => {
       if (!isLoading && !connected) {
         router.push("/");
       }
-    }, [isLoading, connected]);
+    }, [isLoading, connected, router]);
 
     if (isLoading) {
       return (

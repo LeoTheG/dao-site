@@ -66,7 +66,7 @@ function DAOForm() {
                       <Input placeholder="Enter your DAO name" {...field} />
                     </FormControl>
                     <FormDescription>
-                      This is your DAO's official name.
+                      {"This is your DAO's official name."}
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -86,7 +86,7 @@ function DAOForm() {
                       />
                     </FormControl>
                     <FormDescription>
-                      This is your DAO's official description.
+                      {"This is your DAO's official description."}
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
