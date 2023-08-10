@@ -4,7 +4,7 @@ import {
   useMetamaskAuth,
   withMetamaskAuth
 } from "../contexts/MetamaskAuthContext";
-import { shortenAddress } from "../util";
+import { shortenAddress } from "@/lib/utils";
 import { IDaoItem } from "../types";
 import Link from "next/link";
 

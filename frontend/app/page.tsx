@@ -3,7 +3,7 @@ import React from "react";
 import { SlideIn } from "@/components/slideIn";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import { fontFamily } from "./util";
+import { fontFamily } from "@/lib/utils";
 
 export default function Home() {
   const CTA = (
@@ -15,7 +15,7 @@ export default function Home() {
         Hurrah for democracy!
       </p>
       <div className="flex gap-4">
-        <Link href="/dao">
+        <Link href="/dao/create">
           <Button className="w-fit">Create a DAO</Button>
         </Link>
         <Link href="/dao">

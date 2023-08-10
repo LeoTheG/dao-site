@@ -9,6 +9,8 @@ import {
 import { ethers } from "ethers";
 import { useRouter } from "next/navigation";
 import { Spinner } from "@/components/ui/spinner";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 interface IMetamaskAuthContext {
   address: string;
@@ -97,6 +99,7 @@ export const MetamaskAuthProvider: React.FC<PropsWithChildren<{}>> = ({
   useEffect(() => {
     if (window.ethereum) {
       connect();
+      // setIsLoading(false);
       window.ethereum.on("accountsChanged", (accounts: string[]) => {
         if (accounts.length === 0) {
           setAddress("");
@@ -115,6 +118,9 @@ export const MetamaskAuthProvider: React.FC<PropsWithChildren<{}>> = ({
         }
         setIsLoading(false);
       });
+    } else {
+      // dont show loading skeleton if metamask not installed
+      setIsLoading(false);
     }
   }, []);
 
@@ -144,38 +150,18 @@ export const MetamaskAuthProvider: React.FC<PropsWithChildren<{}>> = ({
   );
 };
 
-// define window ethereum
-declare global {
-  interface Window {
-    ethereum: any;
-  }
-}
-
 export const useMetamaskAuth = () => {
   return useContext(MetamaskAuthContext);
 };
 
-// HOC
-// if loading metamask auth
-// show loading... text
-// if not loading and no metamask auth,
-// redirect to home
-
 export const withMetamaskAuth = (Component: React.FC) => {
   return function HOC() {
-    const { isLoading, connected } = useMetamaskAuth();
-    const router = useRouter();
-
-    useEffect(() => {
-      if (!isLoading && !connected) {
-        router.push("/");
-      }
-    }, [isLoading, connected, router]);
+    const { isLoading, connected, connect } = useMetamaskAuth();
 
     if (isLoading) {
       return (
         <div className="p-12 flex gap-4 w-full justify-center items-center">
-          <p className="text-primary">Connecting To MetaMask</p>;
+          <p className="text-primary">Connecting To MetaMask</p>
           <Spinner />
           <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24" />
         </div>
@@ -183,7 +169,20 @@ export const withMetamaskAuth = (Component: React.FC) => {
     }
 
     if (!connected) {
-      return <p className="text-primary">Redirecting...</p>;
+      return (
+        <div className="flex justify-center items-center p-12">
+          <Card className="w-fit">
+            <CardHeader>
+              <CardTitle>Please connect to MetaMask</CardTitle>
+            </CardHeader>
+            <CardContent className="w-full flex justify-center">
+              <Button variant="secondary" className="w-fit" onClick={connect}>
+                Connect
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      );
     }
 
     return <Component />;
