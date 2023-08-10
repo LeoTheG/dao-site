@@ -13,3 +13,11 @@ npm install
 ```bash
 npm test
 ```
+
+## Compile contracts and generate typechain types
+
+```bash
+npm run compile
+```
+
+Also updates typechain-types in frontend
