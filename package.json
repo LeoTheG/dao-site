@@ -1,0 +1,20 @@
+{
+  "name": "dao-now",
+  "version": "1.0.0",
+  "description": "Use a web interface to create and manage DAOs, and to also vote on proposals.",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "(cd frontend && npm install); (cd smart-contract-development && npm install);"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoTheG/dao-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeoTheG/dao-site/issues"
+  },
+  "homepage": "https://github.com/LeoTheG/dao-site#readme"
+}
